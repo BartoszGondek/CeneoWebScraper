@@ -19,14 +19,13 @@ def extract():
         product_id = form.product_id.data
         product = Product(product_id)
         if product.extract_name():
-         product.extract_opinions()
-         product.analyze()
-         product.export_info()
-         product.export_opinions()
-
-         
-         return redirect(url_for('product', product_id=product_id))
-        
+            product.extract_opinions()
+            product.analyze()
+            product.export_info()
+            product.export_opinions()
+            return redirect(url_for('product', product_id=product_id))
+        form.product_id.errors.append('There is no product for provided id or product has no opinions')
+        return render_template('extract.html', form=form)
     return render_template('extract.html', form=form)
 
 @app.route("/products")
@@ -40,5 +39,4 @@ def product(product_id):
 @app.route("/about")
 def about():
     return render_template("about.html")
-    
     

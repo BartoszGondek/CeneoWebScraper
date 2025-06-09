@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+
 from deep_translator import GoogleTranslator
 
 def extract_data(ancestor, selector=None, attribute=None, multiple=False):
